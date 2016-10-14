@@ -27,22 +27,7 @@ public class ResponsivePageTransformer implements ViewPager.PageTransformer {
             counteractSwipe(page, pageWidth * -position);
             addFadingEffect(page, 1 + position);
 
-            if (page instanceof ResponsiveViewPagerInterface) {
-                switch (((ResponsiveViewPagerInterface) page).direction()) {
-                    case Direction.UP:
-                        setTranslationY(page, pageHeight * position);
-                        break;
-                    case Direction.DOWN:
-                        setTranslationY(page, pageHeight * -position);
-                        break;
-                    case Direction.LEFT:
-                        setTranslationX(page, pageHeight * position);
-                        break;
-                    case Direction.RIGHT:
-                        setTranslationX(page, pageHeight * -position);
-                        break;
-                }
-            }
+            handlePageTranslationEffect(page,pageWidth,pageHeight,position);
 
         } else if (position <= 1) { // (0,1]
             // This page is moving in from the right
@@ -52,48 +37,49 @@ public class ResponsivePageTransformer implements ViewPager.PageTransformer {
 
             addFadingEffect(page, 1 - position);
 
-            if (page instanceof ResponsiveViewPagerInterface) {
-                switch (((ResponsiveViewPagerInterface) page).direction()) {
-                    case Direction.UP:
-                        setTranslationY(page, pageHeight * position);
-                        break;
-                    case Direction.DOWN:
-                        setTranslationY(page, pageHeight * -position);
-                        break;
-                    case Direction.LEFT:
-                        setTranslationX(page, pageHeight * position);
-                        break;
-                    case Direction.RIGHT:
-                        setTranslationX(page, pageHeight * -position);
-                        break;
-                }
-//                if (((ResponsiveViewPagerInterface) page).direction() == Direction.UP || ((ResponsiveViewPagerInterface) page).direction() == Direction.RIGHT)
-//                    counteractSwipe(page, pageWidth * -position);
-//                else
-//                    counteractSwipe(page, pageWidth * position);
-            } else if (page instanceof ResponsiveCollectorInterface) {
-                ResponsiveCollectorInterface responsiveCollector = (ResponsiveCollectorInterface) page;
-                for (ResponsiveViewPagerInterface responsiveViewPagerInterface : responsiveCollector.getCollection()) {
-                    switch (responsiveViewPagerInterface.direction()) {
-                        case Direction.UP:
-                            setTranslationY((View) responsiveViewPagerInterface, pageHeight * position);
-                            break;
-                        case Direction.DOWN:
-                            setTranslationY((View) responsiveViewPagerInterface, pageHeight * -position);
-                            break;
-                        case Direction.LEFT:
-                            setTranslationX((View) responsiveViewPagerInterface, pageHeight * position);
-                            break;
-                        case Direction.RIGHT:
-                            setTranslationX((View) responsiveViewPagerInterface, pageHeight * -position);
-                            break;
-                    }
-
-                }
-            }
+            handlePageTranslationEffect(page,pageWidth,pageHeight,position);
 
         } else if (position > 1) {
             setAlpha(page, 0);
+        }
+
+    }
+
+    private void handlePageTranslationEffect(View page,int pageWidth,int pageHeight,float position) {
+        if (page instanceof ResponsiveViewPagerInterface) {
+            switch (((ResponsiveViewPagerInterface) page).direction()) {
+                case Direction.UP:
+                    setTranslationY(page, pageWidth * position);
+                    break;
+                case Direction.DOWN:
+                    setTranslationY(page, pageHeight * -position);
+                    break;
+                case Direction.LEFT:
+                    setTranslationX(page, pageWidth * position);
+                    break;
+                case Direction.RIGHT:
+                    setTranslationX(page, pageHeight * -position);
+                    break;
+            }
+        } else if (page instanceof ResponsiveCollectorInterface) {
+            ResponsiveCollectorInterface responsiveCollector = (ResponsiveCollectorInterface) page;
+            for (ResponsiveViewPagerInterface responsiveViewPagerInterface : responsiveCollector.getCollection()) {
+                switch (responsiveViewPagerInterface.direction()) {
+                    case Direction.UP:
+                        setTranslationY((View) responsiveViewPagerInterface, pageHeight * position);
+                        break;
+                    case Direction.DOWN:
+                        setTranslationY((View) responsiveViewPagerInterface, pageHeight * -position);
+                        break;
+                    case Direction.LEFT:
+                        setTranslationX((View) responsiveViewPagerInterface, pageWidth * position);
+                        break;
+                    case Direction.RIGHT:
+                        setTranslationX((View) responsiveViewPagerInterface, pageWidth * -position);
+                        break;
+                }
+
+            }
         }
 
     }
