@@ -7,21 +7,20 @@
     <com.example.edward.responsiveviewpager.ResponsiveImageview
         android:layout_width="200dp"
         android:layout_centerInParent="true"
-        android:src="@drawable/ic_terrain_black_24dp"
+        android:src="@drawable/ic_group_black_24dp"
         android:layout_height="200dp"
-        app:direction="0"
-        android:tint="@android:color/holo_green_light"
+        app:direction="1"
+        android:tint="@android:color/darker_gray"
         android:id="@+id/responsiveImageview" />
 
     <com.example.edward.responsiveviewpager.ResponsiveImageview
         android:layout_width="100dp"
-        android:src="@drawable/ic_wb_sunny_black_24dp"
+        android:src="@drawable/ic_favorite_black_24dp"
         android:layout_height="100dp"
-        android:layout_marginTop="11dp"
         android:id="@+id/responsiveImageview2"
-        app:direction="3"
-        android:tint="@android:color/holo_red_dark"
-        android:layout_alignTop="@+id/responsiveImageview"
-        android:layout_alignLeft="@+id/responsiveImageview"
-        android:layout_alignStart="@+id/responsiveImageview" />
+        app:direction="2"
+        android:tint="@android:color/holo_red_light"
+        android:layout_alignBottom="@+id/responsiveImageview"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="123dp" />
 </com.example.edward.responsiveviewpager.ResponsiveRelativeLayout>
