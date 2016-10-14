@@ -1,6 +1,7 @@
 package com.example.edward.responsiveviewpager;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
@@ -18,6 +19,9 @@ public class ResponsiveImageview extends ImageView implements ResponsiveViewPage
 
     public ResponsiveImageview(Context context, AttributeSet attrs) {
         super(context, attrs);
+        final TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.ResponsiveImageview);
+        direction = typedArray.getInteger(R.styleable.ResponsiveImageview_direction,Direction.LEFT);
+        typedArray.recycle();
     }
 
     @Override
