@@ -41,11 +41,14 @@ class CustomPagerAdapter extends PagerAdapter {
         if (imageId != 0)
             imageView.setImageResource(imageId);
 
-        if (position < 2) {
+        if (position ==0) {
             imageView.setDirection(position);
             view = imageView;
         } else {
             switch (position){
+                case 1:
+                    view = LayoutInflater.from(mContext).inflate(R.layout.layout_man_hat, null);
+                    break;
                 case 2:
                     view = LayoutInflater.from(mContext).inflate(R.layout.layout_sun_mountain, null);
                     break;
@@ -66,7 +69,7 @@ class CustomPagerAdapter extends PagerAdapter {
     private int getImage(int position) {
         switch (position) {
             case 0:
-                return R.mipmap.ic_launcher;
+                return R.drawable.ic_flight_black_24dp;
             case 1:
                 return R.drawable.ic_brightness_high_black_24dp;
             case 2:

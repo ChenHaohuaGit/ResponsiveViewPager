@@ -42,10 +42,6 @@ public class ResponsivePageTransformer implements ViewPager.PageTransformer {
                         setTranslationX(page, pageHeight * -position);
                         break;
                 }
-//                if (((ResponsiveViewPagerInterface) page).direction() == Direction.UP || ((ResponsiveViewPagerInterface) page).direction() == Direction.RIGHT)
-//                    counteractSwipe(page, pageWidth * -position);
-//                else
-//                    counteractSwipe(page, pageWidth * position);
             }
 
         } else if (position <= 1) { // (0,1]
@@ -75,8 +71,8 @@ public class ResponsivePageTransformer implements ViewPager.PageTransformer {
 //                    counteractSwipe(page, pageWidth * -position);
 //                else
 //                    counteractSwipe(page, pageWidth * position);
-            }else if (page instanceof ResponsiveCollectorInterface){
-                ResponsiveCollectorInterface responsiveCollector= (ResponsiveCollectorInterface) page;
+            } else if (page instanceof ResponsiveCollectorInterface) {
+                ResponsiveCollectorInterface responsiveCollector = (ResponsiveCollectorInterface) page;
                 for (ResponsiveViewPagerInterface responsiveViewPagerInterface : responsiveCollector.getCollection()) {
                     switch (responsiveViewPagerInterface.direction()) {
                         case Direction.UP:
