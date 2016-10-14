@@ -31,6 +31,8 @@ class CustomPagerAdapter extends PagerAdapter {
 
 //        View view = LayoutInflater.from(mContext).inflate(R.layout.layout_sun_mountain,container);
 
+        View view;
+
         ResponsiveImageview imageView = new ResponsiveImageview(mContext);
         int imageId = 0;
 
@@ -39,14 +41,16 @@ class CustomPagerAdapter extends PagerAdapter {
         if (imageId != 0)
             imageView.setImageResource(imageId);
 
-        if (position < 4)
+        if (position < 4) {
             imageView.setDirection(position);
-        else
-            LayoutInflater.from(mContext).inflate(R.layout.layout_sun_mountain,container);
+            view = imageView;
+        } else {
+            view = LayoutInflater.from(mContext).inflate(R.layout.layout_sun_mountain, null);
+        }
 
-        container.addView(imageView);
+        container.addView(view);
 
-        return imageView;
+        return view;
     }
 
     private int getImage(int position) {
