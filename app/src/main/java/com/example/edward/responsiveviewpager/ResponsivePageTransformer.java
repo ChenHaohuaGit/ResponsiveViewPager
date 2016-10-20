@@ -111,23 +111,4 @@ public class ResponsivePageTransformer implements ViewPager.PageTransformer {
         }
     }
 
-//    private void translationEffect(ResponsiveCollectorInterface page,float position) {
-//        switch (((ResponsiveViewPagerInterface) page).direction()) {
-//            case Direction.UP:
-//                setTranslationY(page, page.getHeight() * position);
-//                break;
-//            case Direction.DOWN:
-//                setTranslationY(page, page.getHeight() * -position);
-//                break;
-//            case Direction.LEFT:
-//                setTranslationX(page, page.getWidth() * position);
-//                break;
-//            case Direction.RIGHT:
-//                setTranslationX(page, page.getWidth() * -position);
-//                break;
-//        }
-//
-//    }
-
-
 }
